@@ -1,0 +1,8 @@
+prefix=/home/dhriti/sac_ws/devel
+
+Name: sac_final_2022
+Description: Description of sac_final_2022
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
