@@ -1,0 +1,8 @@
+prefix=/home/dhriti/sac_ws/install
+
+Name: arena_with_qr
+Description: Description of arena_with_qr
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
