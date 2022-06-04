@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<launch>
+        <!-- overwriting these args -->
+        <arg name="debug" default="false" />
+        <arg name="gui" default="true" />
+        <arg name="pause" default="false" />
+        <arg name="world" default="$(find arena_with_qr)/world/cubes_and_qr_arena.world" />
+
+        <!-- include gazebo_ros launcher -->
+        <include file="$(find gazebo_ros)/launch/empty_world.launch">
+                <arg name="world_name" value="$(arg world)" />
+                <arg name="debug" value="$(arg debug)" />
+                <arg name="gui" value="$(arg gui)" />
+                <arg name="paused" value="$(arg pause)" />
+                <arg name="use_sim_time" value="true" />
+        </include>
+        <!-- Robot pose -->
+	<arg name="x" default="0"/>
+	<arg name="y" default="0"/>
+	<arg name="z" default="0"/>
+	<arg name="roll" default="0"/>
+	<arg name="pitch" default="0"/>
+	<arg name="yaw" default="0"/>
+	<arg name="robot_name" default="atom"/>
+
+	<!-- Launch other relevant files-->
+	<include file="$(find atom)/launch/robot_description.launch"/>
+
+	<!-- World File -->
+	<arg name="world_file" default="$(find atom)/worlds/empty.world"/>
+
+	<!-- Launch Gazebo World 
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="use_sim_time1" value="true"/>
+		<arg name="verbose" value="false"/>
+		<arg name="debug1" value="false"/>
+		<arg name="gui1" value="true" />
+		<arg name="world_name1" value="$(arg world_file)"/>
+	</include> -->
+
+	
+
+	<!-- Spawn My Robot -->
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+		args="-urdf -param robot_description -model atom
+			  -x $(arg x) -y $(arg y) -z $(arg z)
+			  -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
+
+	<!--launch rviz-->
+	<node name="rviz" pkg="rviz" type="rviz" respawn="false"
+		  args="-d $(find atom)/default.rviz"/>
+		  
+
+</launch>
