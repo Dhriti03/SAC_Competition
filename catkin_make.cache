@@ -1,0 +1,2 @@
+alpha:atom:beta_description:live_demo:sac_arena/arena_with_qr1:sac_final_2022
+-DCATKIN_DEVEL_PREFIX=/home/dhriti/sac_ws/devel -DCMAKE_INSTALL_PREFIX=/home/dhriti/sac_ws/install -G Unix Makefiles
