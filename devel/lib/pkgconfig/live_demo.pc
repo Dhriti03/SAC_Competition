@@ -1,8 +1,0 @@
-prefix=/home/dhriti/sac_ws/devel
-
-Name: live_demo
-Description: Description of live_demo
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
